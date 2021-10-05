@@ -28,9 +28,10 @@ class BaseModel:
         """
         print: [<class name>] (<self.id>) <self.__dict__>
         """
-        return ''.join(["[BaseModel] ",
-                        "(", self.id, ") ",
-                        str(self.__dict__)])
+        return ("[{}] ({}) {}".format(
+            self.__class__.__name__,
+            self.id,
+            self.__dict__))
 
     def to_dict(self):
         """
