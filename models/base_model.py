@@ -39,7 +39,8 @@ class BaseModel:
         >> create a dictionary representation with
         “simple object type” of the BaseModel
         """
-        setattr(self, 'created_at', self.created_at.isoformat())
-        setattr(self, 'updated_at', self.updated_at.isoformat())
-        self.__dict__['__class__'] = self.__class__.__name__
-        return self.__dict__
+        Cpy = self.__dict__.copy()
+        Cpy["created_at"] = self.created_at.isoformat()
+        Cpy["updated_at"] = self.updated_at.isoformat()
+        Cpy["__class__"] = self.__class__.__name__
+        return Cpy
