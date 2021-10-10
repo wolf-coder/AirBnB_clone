@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Main Module
+Main Module with the main Class
 """
 import uuid
 from datetime import datetime
@@ -36,10 +36,8 @@ class BaseModel:
 
     def to_dict(self):
         """
-        >> This method will be the first piece of the
-        serialization/deserialization process:
-        >> create a dictionary representation with
-        “simple object type” of the BaseModel
+        >> Method that creates a dictionary representation with
+        "simple object type" of the BaseModel
         """
         Cpy = self.__dict__.copy()
         Cpy["created_at"] = self.created_at.isoformat()
