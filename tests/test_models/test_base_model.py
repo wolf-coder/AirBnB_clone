@@ -19,7 +19,6 @@ class Test_Base_Model(unittest.TestCase):
         """
         Instance = BaseModel()
         ToDict = Instance.to_dict()
-        self.assertEqual(type(ToDict['created_at']), str)
         self.assertEqual(type(ToDict['updated_at']), str)
 
 
