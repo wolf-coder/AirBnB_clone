@@ -33,6 +33,17 @@ class Test_Base_Model(unittest.TestCase):
         Time_2 = Instance.updated_at
         self.assertNotEqual(Time_1, Time_2)
 
+    def test_Magic_str(self):
+        """
+        Testing __str__() method:
+        - output equal to: '[<class name>] (<self.id>) <self.__dict__>'
+        """
+        Instance = BaseModel()
+        Requiered = "[BaseModel] ({}) {}".format(Instance.id,
+                                                 Instance.__dict__)
+        Result = Instance.__str__()
+        self.assertEqual(Requiered, Result)
+
 
 if __name__ == '__main__':
     unittest.main()
