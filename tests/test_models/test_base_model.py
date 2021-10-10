@@ -10,16 +10,28 @@ import uuid
 
 class Test_Base_Model(unittest.TestCase):
     """
-    models/base_model Testing
+    models/base_model Testing:
+    - All key values are str type.
     """
 
-    def test0(self):
+    def test_to_dict(self):
         """
-        Testing the to_dict() methods output
+        Testing the to_dict() methods.
         """
         Instance = BaseModel()
         ToDict = Instance.to_dict()
         self.assertEqual(type(ToDict['updated_at']), str)
+
+    def test_save(self):
+        """
+        Testing the save() methods:
+        - updated_at is updated.
+        """
+        Instance = BaseModel()
+        Time_1 = Instance.updated_at
+        Instance.save()
+        Time_2 = Instance.updated_at
+        self.assertNotEqual(Time_1, Time_2)
 
 
 if __name__ == '__main__':
