@@ -25,8 +25,9 @@ class Test_Base_Model(unittest.TestCase):
     def test_save(self):
         """
         Testing the save() methods:
-        - updated_at is updated.
+        - 'updated_at' attribute is updated.
         """
+
         Instance = BaseModel()
         Time_1 = Instance.updated_at
         Instance.save()
@@ -38,6 +39,7 @@ class Test_Base_Model(unittest.TestCase):
         Testing __str__() method:
         - output equal to: '[<class name>] (<self.id>) <self.__dict__>'
         """
+
         Instance = BaseModel()
         Requiered = "[BaseModel] ({}) {}".format(Instance.id,
                                                  Instance.__dict__)
