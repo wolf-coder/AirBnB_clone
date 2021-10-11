@@ -16,11 +16,14 @@ class Test_Base_Model(unittest.TestCase):
 
     def test_to_dict(self):
         """
-        Testing the to_dict() methods.
+        Testing the to_dict() methods:
+        All keys Values must be str
         """
         Instance = BaseModel()
         ToDict = Instance.to_dict()
-        self.assertEqual(type(ToDict['updated_at']), str)
+        for Key in ToDict.keys():
+            self.assertEqual(type(ToDict[Key]), str,
+                             "The key ['{}'] is not an str".format(Key))
 
     def test_save(self):
         """
