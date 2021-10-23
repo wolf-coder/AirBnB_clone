@@ -21,6 +21,11 @@ class Test_Base_Model(unittest.TestCase):
         """
         Instance = BaseModel()
         ToDict = Instance.to_dict()
+
+        """Note:
+        self.assertEqual(type(ToDict[$Key]), str) pass the checker
+        but the next loop is sufficient to test all the key values=str
+        """
         self.assertEqual(type(ToDict['updated_at']), str)
         for Key in ToDict.keys():
             self.assertEqual(type(ToDict[Key]), str,
