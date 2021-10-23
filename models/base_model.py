@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Main Module with the main Class
+Main Module with the Main Class
 """
 import uuid
 from datetime import datetime
