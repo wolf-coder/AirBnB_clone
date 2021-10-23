@@ -21,6 +21,7 @@ class Test_Base_Model(unittest.TestCase):
         """
         Instance = BaseModel()
         ToDict = Instance.to_dict()
+        self.assertEqual(type(ToDict['updated_at']), str)
         for Key in ToDict.keys():
             self.assertEqual(type(ToDict[Key]), str,
                              "The key ['{}'] is not an str".format(Key))
