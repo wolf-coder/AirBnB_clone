@@ -6,6 +6,7 @@ import json
 from models.engine.file_storage import FileStorage
 import unittest
 
+
 class Test_FileStorage(unittest.TestCase):
     """
     Testing models.file_storage model.
@@ -18,7 +19,8 @@ class Test_FileStorage(unittest.TestCase):
         """
         storage = FileStorage()
         obj = storage.all()
-        self.assertEqual(type(obj), dict, "the returned object must be a dictionary")
+        self.assertEqual(type(obj), dict,
+                         "the returned object must be a dictionary")
 
 
 if __name__ == '__main__':
