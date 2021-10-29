@@ -4,6 +4,7 @@ Main Module with the Main class
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -26,6 +27,12 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            """
+            The FileModels.Storage.new() method function definition:
+            def new(self, obj)
+            `self` here will be bound to `obj`
+            """
+            models.storage.new(self)
 
     def save(self):
         """
@@ -33,6 +40,7 @@ class BaseModel:
         datetime
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def __str__(self):
         """
