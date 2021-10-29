@@ -16,7 +16,7 @@ class Test_Base_Model(unittest.TestCase):
 
     def test_to_dict(self):
         """
-        Testing the to_dict() methods:
+        Testing the to_dict() method:
         All keys Values must be str
         """
         Instance = BaseModel()
