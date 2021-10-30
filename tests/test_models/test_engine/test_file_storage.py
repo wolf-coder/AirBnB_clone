@@ -44,7 +44,16 @@ class Test_FileStorage(unittest.TestCase):
         This method must serializes __objects to the JSON file
         (path: __file_path)
         """
-        pass
+        my_model = BaseModel()
+        storage = FileStorage()
+
+        my_model_ID = my_model.id
+        my_model_Class = my_model.__class__.__name__
+        storage.new(my_model)
+        storage.save()
+        Dict = storage.all()
+        self.assertEqual(Dict['.'.join((my_model_Class, my_model_ID))],
+                         my_model)
 
 
 if __name__ == '__main__':
