@@ -65,9 +65,6 @@ class Test_FileStorage(unittest.TestCase):
         """
         my_model = BaseModel()
         storage = FileStorage()
-
-        my_model_ID = my_model.id
-        my_model_Class = my_model.__class__.__name__
         storage.new(my_model)
         storage.save()
         Dict_before_reload = storage.all()
