@@ -6,6 +6,7 @@ import json
 from models.engine.file_storage import FileStorage
 import unittest
 from models.base_model import BaseModel
+from io import StringIO
 
 
 class Test_FileStorage(unittest.TestCase):
@@ -37,6 +38,13 @@ class Test_FileStorage(unittest.TestCase):
         Dict = storage.all()
         self.assertEqual(Dict['.'.join((my_model_Class, my_model_ID))],
                          my_model)
+
+    def test_save(self):
+        """
+        This method must serializes __objects to the JSON file
+        (path: __file_path)
+        """
+        pass
 
 
 if __name__ == '__main__':
