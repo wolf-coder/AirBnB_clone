@@ -4,6 +4,7 @@ data storage manipulation
 """
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage():
@@ -47,6 +48,8 @@ class FileStorage():
         try:
             with open(self.__file_path, 'r')as fp:
                 _Dict = json.load(fp)
-                self.__objects = {k: BaseModel(**v) for k, v in _Dict.items()}
+                self.__objects = {
+                    k: eval(v['__class__'])(**v)
+                    for k, v in _Dict.items()}
         except FileNotFoundError:
             pass
