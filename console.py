@@ -4,9 +4,10 @@ framework for writing line-oriented command interpreters.
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
-Def_classes = {'BaseModel'}
+Def_classes = {'BaseModel', 'User'}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -25,13 +26,13 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """
         This method will:
-        - Creates a new instance of BaseModel
+        - Creates a new instance of `arg`
         - Saves it (to the JSON file) and prints the id. Ex:
         $ create BaseModel
         """
         if arg:
             if arg in Def_classes:
-                my_model = BaseModel()
+                my_model = eval(arg)()
                 my_model.save()
                 self.Ids.add(my_model.id)
                 print(my_model.id)
@@ -55,7 +56,10 @@ class HBNBCommand(cmd.Cmd):
         elif Arg_List[1] not in self.Ids:
             print("** no instance found **")
         else:
-            print(storage.all()['.'.join((Arg_List[0], Arg_List[1]))])
+            try:
+                print(storage.all()['.'.join((Arg_List[0], Arg_List[1]))])
+            except KeyError:
+                print("** no instance found **")
 
     def do_destroy(self, arg):
         """
@@ -72,9 +76,13 @@ class HBNBCommand(cmd.Cmd):
         elif Arg_List[1] not in self.Ids:
             print("** no instance found **")
         else:
-            del storage.all()['.'.join((Arg_List[0], Arg_List[1]))]
-            self.Ids.discard(Arg_List[1])
-            storage.save()
+            try:
+                del storage.all()['.'.join((Arg_List[0], Arg_List[1]))]
+            except KeyError:
+                print("** no instance found **")
+            else:
+                self.Ids.discard(Arg_List[1])
+                storage.save()
 
     def do_all(self, arg):
         """
@@ -113,9 +121,13 @@ class HBNBCommand(cmd.Cmd):
         elif len(Arg_List) == 3:
             print("** value missing **")
         else:
-            Obj = storage.all()['.'.join(Arg_List[:2])]
-            setattr(Obj, Arg_List[2], Arg_List[3].strip('\'"'))
-            storage.save()
+            try:
+                Obj = storage.all()['.'.join(Arg_List[:2])]
+            except KeyError:
+                print("** value missing **")
+            else:
+                setattr(Obj, Arg_List[2], Arg_List[3].strip('\'"'))
+                storage.save()
 
     def emptyline(self):
         """
