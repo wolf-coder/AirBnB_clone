@@ -16,7 +16,7 @@ class Test_User(unittest.TestCase):
         """
         self.assertTrue(issubclass(User, BaseModel))
         my_user = User()
-        self.assertIn("first_name", User.__dict__.keys())
+        self.assertIn("first_name", User.__dict__)
 
 
 if __name__ == '__main__':
