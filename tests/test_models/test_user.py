@@ -15,7 +15,10 @@ class Test_User(unittest.TestCase):
         Testing User inherit from BaseModel
         """
         self.assertTrue(issubclass(User, BaseModel))
-        self.assertTrue(type(User.first_name), "")
+        self.assertIn("email", User.__dict__)
+        self.assertIn("password", User.__dict__)
+        self.assertIn("first_name", User.__dict__)
+        self.assertIn("last_name", User.__dict__)
 
 
 if __name__ == '__main__':
