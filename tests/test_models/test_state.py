@@ -16,6 +16,7 @@ class Test_modules(unittest.TestCase):
         """
         self.assertTrue(issubclass(State, BaseModel))
         self.assertIn("name", State.__dict__)
+        self.assertTrue(type(State.name) == str)
 
 
 if __name__ == '__main__':
