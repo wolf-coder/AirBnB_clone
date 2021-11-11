@@ -15,6 +15,7 @@ class Test_modules(unittest.TestCase):
         """
         Testing Amenity: 'name' class attribute
         """
+        self.assertTrue(issubclass(Amenity, BaseModel))
         self.assertIn("name", Amenity.__dict__)
 
 
