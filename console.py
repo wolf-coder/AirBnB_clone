@@ -3,11 +3,23 @@
 framework for writing line-oriented command interpreters.
 """
 import cmd
-from models.base_model import BaseModel
-from models.user import User
 from models import storage
 
-Def_classes = {'BaseModel', 'User'}
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.review import Review
+from models.amenity import Amenity
+
+Def_classes = {'BaseModel',
+               'User',
+               'City',
+               'State',
+               'Place',
+               'Review',
+               'Amenity'}
 
 
 class HBNBCommand(cmd.Cmd):
